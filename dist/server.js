@@ -9,10 +9,11 @@ const body_parser_1 = __importDefault(require("body-parser"));
 const cookie_parser_1 = __importDefault(require("cookie-parser"));
 const cors_1 = __importDefault(require("cors"));
 const compression_1 = __importDefault(require("compression"));
-// import router from './router';
+const router_1 = __importDefault(require("./router"));
 const dotenv_1 = __importDefault(require("dotenv"));
 const mongoose_1 = __importDefault(require("mongoose"));
 const colors_1 = __importDefault(require("colors"));
+const consoleLogsFunction_1 = require("./constants/consoleLogsFunction");
 colors_1.default.enable();
 dotenv_1.default.config();
 const app = (0, express_1.default)();
@@ -29,15 +30,15 @@ if (!MongDB_URL) {
     throw new Error("MongoDB URL is not defined");
 }
 server.listen(7000, () => {
-    console.log("Ready - ".green + "Server Running on http://localhost:7000");
+    consoleLogsFunction_1.MessageLog.Ready("Server Running on http://localhost:7000");
     if (MongDB_URL === process.env.MONGO_DB_LOCAL)
-        console.log("Ready - ".green + "MongoDB is running at localhost");
+        consoleLogsFunction_1.MessageLog.Ready("MongoDB is running at localhost");
     else
-        console.log("Ready - ".green + "MongoDB is running at Atlas");
+        consoleLogsFunction_1.MessageLog.Ready("MongoDB is running at Atlas");
 });
 mongoose_1.default.Promise = Promise;
 mongoose_1.default.connect(MongDB_URL);
 mongoose_1.default.connection.on('error', (error) => console.log(error));
-// app.use('/kalinga', router());
+app.use('/', (0, router_1.default)());
 exports.default = app;
 //# sourceMappingURL=server.js.map

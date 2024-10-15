@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.inputValidationTechnicalSkills = void 0;
-const consoleLogsFunction_1 = require("constants/consoleLogsFunction");
-const Messages_1 = require("constants/Messages");
+const consoleLogsFunction_1 = require("../../constants/consoleLogsFunction");
+const Messages_1 = require("../../constants/Messages");
 const allowedSkillLevel = ["Intermediate", "Beginner", "Novice"];
 const inputValidationTechnicalSkills = async (req, res, next) => {
     try {

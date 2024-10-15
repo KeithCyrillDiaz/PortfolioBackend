@@ -20,4 +20,3 @@ export type TechnicalSkillTypes = {
     Experience: string;
     Rating: number
 }
-\

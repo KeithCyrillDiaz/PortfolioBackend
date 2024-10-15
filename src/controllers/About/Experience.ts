@@ -1,18 +1,30 @@
 import { ExperienceTypes } from 'constants/types'
 import { MessageLog } from '../../constants/consoleLogsFunction'
-import { catchErrorLog, ErrorMessages } from '../../constants/Messages'
+import { catchErrorLog, ErrorMessages, validResultForFetch } from '../../constants/Messages'
 import express from 'express'
-import { createExperience } from '../../models/About/Experiences'
+import { createExperience, getExperiences } from '../../models/About/Experiences'
 
 
 export const fetchExperiences = async(req: express.Request, res: express.Response) => {
     try {
         
         MessageLog.Event("Fetching Experiences")
+        const result = await getExperiences()
+        if(!validResultForFetch(result, res, "Experiences")){
+            return
+        }
+
+        MessageLog.Success("Retrieve Experiences Data Successfully")
+        res.status(200).json({
+            messages: {
+                code: 0,
+                message: "Retrieve Experiences Data Successfully"
+            },
+            result
+        })
 
     } catch (error) {
-        MessageLog.Error("Internal Server Error")
-        res.status(500).json(ErrorMessages["Server Error"])
+        catchErrorLog(res, error)
         return 
     }
 }

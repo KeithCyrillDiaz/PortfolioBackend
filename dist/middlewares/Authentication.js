@@ -22,7 +22,7 @@ const getBackendAuthentication = async (req, res, next) => {
         next();
     }
     catch (error) {
-        console.log("Internal Server Error:", error);
+        consoleLogsFunction_1.MessageLog.Error("Internal Server Error");
         res.status(500).json(Messages_1.ErrorMessages["Server Error"]);
         return;
     }

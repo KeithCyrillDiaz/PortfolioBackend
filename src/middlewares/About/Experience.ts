@@ -1,11 +1,13 @@
-import { MessageLog } from '../constants/consoleLogsFunction'
-import { ErrorMessages } from '../constants/Messages'
 import express from 'express'
+
+import { MessageLog } from '../../constants/consoleLogsFunction'
+import { catchErrorLog, ErrorMessages } from '../../constants/Messages'
+
 
 export const experienceInputValidation = async (
     req: express.Request, res: express.Response, next: express.NextFunction) => {
         try {
-            MessageLog.Event("Validating Input")
+            MessageLog.Event("Validating Inputs")
             const { startingMonth, endingMonth, year, company, role, bulletsData } = req.body;
             if(
                 !startingMonth || 
@@ -23,8 +25,7 @@ export const experienceInputValidation = async (
             next();
 
         } catch (error) {
-            console.log("Internal Server Error", error)
-            res.status(500).json(ErrorMessages["Server Error"])
+            catchErrorLog(res, error)
             return 
         }
     }

@@ -13,7 +13,6 @@ const ExperienceSchema = new mongoose.Schema({
     updatedAt: {type: Date, default: Date.now}
 })
 
-
 export const ExperienceModel = mongoose.model("Experience", ExperienceSchema)
 export const createExperience = (values: Record<string, any>) => new ExperienceModel(values).save().then((result) => result.toObject())
 export const getExperiences = () => ExperienceModel.find()

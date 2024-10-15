@@ -1,6 +1,6 @@
 import express from 'express'
 import { getBackendAuthentication } from '../middlewares/Authentication'
-import { fetchExperiences, storeExperiences } from '../controllers/Experience'
+import { fetchExperiences, storeExperiences } from '../controllers/About/Experience'
 import { experienceInputValidation } from '../middlewares/Experience';
 
 export default(router: express.Router) => {

@@ -32,7 +32,7 @@ export const getBackendAuthentication = async (
         next();
 
     } catch (error) {
-        console.log("Internal Server Error:", error)
+        MessageLog.Error("Internal Server Error")
         res.status(500).json(ErrorMessages["Server Error"])
         return
     }

@@ -8,9 +8,7 @@ const fetchExperiences = async (req, res) => {
     try {
         consoleLogsFunction_1.MessageLog.Event("Fetching Experiences");
         const result = await (0, Experiences_1.getExperiences)();
-        if (!result) {
-            consoleLogsFunction_1.MessageLog.Error("Failed Fetching Experiences");
-            res.status(500).json(Messages_1.ErrorMessages['Server Error']);
+        if (!(0, Messages_1.validResultForFetch)(result, res, "Experiences")) {
             return;
         }
         consoleLogsFunction_1.MessageLog.Success("Retrieve Experiences Data Successfully");

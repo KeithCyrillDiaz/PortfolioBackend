@@ -1,5 +1,5 @@
-import { MessageLog } from '../constants/consoleLogsFunction'
-import { ErrorMessages } from '../constants/Messages'
+import { MessageLog } from '../../constants/consoleLogsFunction'
+import { catchErrorLog, ErrorMessages } from '../../constants/Messages'
 import express from 'express'
 
 export const experienceInputValidation = async (
@@ -23,8 +23,7 @@ export const experienceInputValidation = async (
             next();
 
         } catch (error) {
-            MessageLog.Error("Internal Server Error")
-            res.status(500).json(ErrorMessages["Server Error"])
+            catchErrorLog(res, error)
             return 
         }
     }

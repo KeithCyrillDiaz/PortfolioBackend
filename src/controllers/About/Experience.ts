@@ -1,8 +1,8 @@
 import { ExperienceTypes } from 'constants/types'
 import { MessageLog } from '../../constants/consoleLogsFunction'
-import { ErrorMessages } from '../../constants/Messages'
+import { catchErrorLog, ErrorMessages } from '../../constants/Messages'
 import express from 'express'
-import { createExperience } from '../../models/Experiences'
+import { createExperience } from '../../models/About/Experiences'
 
 
 export const fetchExperiences = async(req: express.Request, res: express.Response) => {
@@ -40,8 +40,7 @@ export const storeExperiences = async (req:express.Request, res:express.Response
         })
 
     } catch (error) {
-        MessageLog.Error("Internal Server Error")
-        res.status(500).json(ErrorMessages["Server Error"])
+        catchErrorLog(res, error)
         return 
     }
 }

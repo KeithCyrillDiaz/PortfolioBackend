@@ -2,7 +2,8 @@ import express from 'express'
 
 import { MessageLog } from '../../constants/consoleLogsFunction'
 import { catchErrorLog, ErrorMessages } from '../../constants/Messages'
-
+import { dateTypes } from '../../constants/types'
+import { ValidMonth } from '../../constants/validation'
 
 export const experienceInputValidation = async (
     req: express.Request, res: express.Response, next: express.NextFunction) => {
@@ -11,7 +12,9 @@ export const experienceInputValidation = async (
             const { startingMonth, endingMonth, year, company, role, bulletsData } = req.body;
             if(
                 !startingMonth || 
+                !ValidMonth.includes(startingMonth) ||
                 !endingMonth || 
+                !ValidMonth.includes(endingMonth) ||
                 typeof year !== 'number' || 
                 !company || 
                 !role || 

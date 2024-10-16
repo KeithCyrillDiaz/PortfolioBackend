@@ -17,7 +17,7 @@ export const inputValidationPersonalProjects = async (req: Request, res: Respons
                 projectDetails,
                 introduction,
                 images,
-                videos, 
+                video, 
             } = req.body
             //MobileAppProject is not required so its okay not to check
             if(
@@ -32,8 +32,8 @@ export const inputValidationPersonalProjects = async (req: Request, res: Respons
                 !appName ||
                 !projectDetails ||
                 !introduction ||
-                !images ||
-                !videos
+                !Array.isArray(images) ||
+                !video
             ) {
                 MessageLog.Error("Bad Request")
                 res.status(400).json(ErrorMessages['Bad Request'])

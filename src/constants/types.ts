@@ -47,5 +47,35 @@ export type PersonalProjectsTypes = {
     projectDetails: string;
     introduction: string;
     images: imageType[];
-    videos: videoType[];
+    video: videoType;
+}
+
+export type TeamProjectsTypes = {
+    startingMonth: dateTypes;
+    endingMonth: dateTypes;
+    MobileAndDesktop: boolean;
+    MobileAppProject?: boolean;
+    year: number
+    projectType: ProjectTypes;
+    appName: string;
+    projectDetails: string;
+    introduction: string;
+    images: imageType[];
+    video: videoType;
+    Technologies: TechnologiesType;
+    Members: MembersType[];
+    
+}
+
+
+export type TechnologiesType = {
+    frontEnd: string[];
+    backEnd: string[];
+}
+
+export type MembersType = {
+    profileImageURL: string | undefined;
+    linkedInURL: string | undefined;
+    role: string;
+    fullName: string;
 }

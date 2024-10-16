@@ -20,11 +20,11 @@ const PersonalProjectSchema = new mongoose_1.default.Schema({
                 label: { type: String, required: true },
                 portrait: { type: Boolean, default: false },
             }] },
-    videos: { type: [{
-                videoURL: { type: String, required: true },
-                label: { type: String, required: true },
-                videoThumbNailURL: { type: String, required: true },
-            }] },
+    video: { type: {
+            videoURL: { type: String, required: true },
+            label: { type: String, required: true },
+            videoThumbNailURL: { type: String, required: true },
+        } },
 });
 exports.PersonalProjectModel = mongoose_1.default.model("Personal_Project", PersonalProjectSchema);
 const getAllPersonalProjects = () => exports.PersonalProjectModel.find();

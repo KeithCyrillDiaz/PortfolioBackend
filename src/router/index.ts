@@ -3,6 +3,7 @@ import Experience from './About/Experience'
 import TechnicalSkills from './About/TechnicalSkills'
 import Authentication from './Authentication'
 import PersonalProjects from './Projects/PersonalProjects'
+import TeamProject from './Projects/TeamProject'
 
 const router = express.Router()
 
@@ -11,5 +12,6 @@ export default(): express.Router => {
     Experience(router)
     TechnicalSkills(router)
     PersonalProjects(router)
+    TeamProject(router)
     return router
 }

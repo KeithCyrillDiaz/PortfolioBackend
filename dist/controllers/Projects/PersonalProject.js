@@ -1,10 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.storePersonalProjects = exports.fetchAllPersonalProjects = void 0;
+exports.storePersonalProjects = exports.fetchPersonalProjects = void 0;
 const consoleLogsFunction_1 = require("../../constants/consoleLogsFunction");
 const Messages_1 = require("../../constants/Messages");
 const PersonalProjects_1 = require("../../models/Projects/PersonalProjects");
-const fetchAllPersonalProjects = async (req, res) => {
+const fetchPersonalProjects = async (req, res) => {
     try {
         consoleLogsFunction_1.MessageLog.Event("Fetching personal projects data");
         const result = await (0, PersonalProjects_1.getAllPersonalProjects)();
@@ -16,7 +16,7 @@ const fetchAllPersonalProjects = async (req, res) => {
         return;
     }
 };
-exports.fetchAllPersonalProjects = fetchAllPersonalProjects;
+exports.fetchPersonalProjects = fetchPersonalProjects;
 const storePersonalProjects = async (req, res) => {
     try {
         consoleLogsFunction_1.MessageLog.Event("Storing personal projects data");

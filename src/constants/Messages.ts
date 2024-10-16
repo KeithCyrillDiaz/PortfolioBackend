@@ -32,11 +32,11 @@ export const catchErrorLog = (res: Response, error: string) => {
     return
 }
 
-export const validResultForFetch = (result: Document[], res: express.Response, dataName: string): boolean => {
+export const checkFetchResult = (result: Document[], res: express.Response, dataName: string)=> {
     if(!result){
         MessageLog.Error(`Failed to fetch ${dataName.toLowerCase()} data`)
         res.status(500).json(ErrorMessages['Server Error'])
-        return false
+        return 
     }
 
     if(result.length === 0){
@@ -47,8 +47,34 @@ export const validResultForFetch = (result: Document[], res: express.Response, d
                 message: `No ${dataName.toLowerCase()} data available`
             }
         })
-        return false
+        return 
     }
 
-    return true
+    MessageLog.Success("Retrieve Personal Projects Data Successfully")
+    res.status(200).json({
+        messages: {
+            code: 0,
+            message: "Retrieve Personal Projects Data Successfully"
+        },
+        result
+    })
+    return 
+}
+
+
+export const checkCreateResult = (result: any, res: express.Response,  dataName: string) => {
+    if(!result) {
+        MessageLog.Error("Failed to store data")
+        res.status(500).json(ErrorMessages["Server Error"])
+        return 
+    }
+
+    MessageLog.Success(`${dataName.toLowerCase()} data have been stored`)
+    res.status(200).json({messages: {
+            code: 0,
+            message: `${dataName.toLowerCase()} data have been stored`
+        },
+        result
+    })
+    return
 }

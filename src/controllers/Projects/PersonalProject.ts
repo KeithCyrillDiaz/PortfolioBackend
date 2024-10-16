@@ -4,7 +4,7 @@ import { catchErrorLog, checkCreateResult, checkFetchResult } from '../../consta
 import { createPersonalProjects, getAllPersonalProjects } from '../../models/Projects/PersonalProjects'
 
 
-export const fetchAllPersonalProjects = async (req: Request, res: Response) => {
+export const fetchPersonalProjects = async (req: Request, res: Response) => {
     try {
             MessageLog.Event("Fetching personal projects data")
             const result = await getAllPersonalProjects()

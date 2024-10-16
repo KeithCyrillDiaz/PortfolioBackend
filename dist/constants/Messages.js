@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.validResultForFetch = exports.catchErrorLog = exports.ErrorMessages = void 0;
+exports.checkCreateResult = exports.checkFetchResult = exports.catchErrorLog = exports.ErrorMessages = void 0;
 const consoleLogsFunction_1 = require("./consoleLogsFunction");
 exports.ErrorMessages = {
     "Server Error": {
@@ -28,11 +28,11 @@ const catchErrorLog = (res, error) => {
     return;
 };
 exports.catchErrorLog = catchErrorLog;
-const validResultForFetch = (result, res, dataName) => {
+const checkFetchResult = (result, res, dataName) => {
     if (!result) {
         consoleLogsFunction_1.MessageLog.Error(`Failed to fetch ${dataName.toLowerCase()} data`);
         res.status(500).json(exports.ErrorMessages['Server Error']);
-        return false;
+        return;
     }
     if (result.length === 0) {
         consoleLogsFunction_1.MessageLog.Error(`No ${dataName.toLowerCase()} data found`);
@@ -42,9 +42,33 @@ const validResultForFetch = (result, res, dataName) => {
                 message: `No ${dataName.toLowerCase()} data available`
             }
         });
-        return false;
+        return;
     }
-    return true;
+    consoleLogsFunction_1.MessageLog.Success("Retrieve Personal Projects Data Successfully");
+    res.status(200).json({
+        messages: {
+            code: 0,
+            message: "Retrieve Personal Projects Data Successfully"
+        },
+        result
+    });
+    return;
 };
-exports.validResultForFetch = validResultForFetch;
+exports.checkFetchResult = checkFetchResult;
+const checkCreateResult = (result, res, dataName) => {
+    if (!result) {
+        consoleLogsFunction_1.MessageLog.Error("Failed to store data");
+        res.status(500).json(exports.ErrorMessages["Server Error"]);
+        return;
+    }
+    consoleLogsFunction_1.MessageLog.Success(`${dataName.toLowerCase()} data have been stored`);
+    res.status(200).json({ messages: {
+            code: 0,
+            message: `${dataName.toLowerCase()} data have been stored`
+        },
+        result
+    });
+    return;
+};
+exports.checkCreateResult = checkCreateResult;
 //# sourceMappingURL=Messages.js.map

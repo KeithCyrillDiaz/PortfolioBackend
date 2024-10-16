@@ -8,17 +8,7 @@ const fetchExperiences = async (req, res) => {
     try {
         consoleLogsFunction_1.MessageLog.Event("Fetching Experiences");
         const result = await (0, Experiences_1.getExperiences)();
-        if (!(0, Messages_1.validResultForFetch)(result, res, "Experiences")) {
-            return;
-        }
-        consoleLogsFunction_1.MessageLog.Success("Retrieve Experiences Data Successfully");
-        res.status(200).json({
-            messages: {
-                code: 0,
-                message: "Retrieve Experiences Data Successfully"
-            },
-            result
-        });
+        (0, Messages_1.checkCreateResult)(result, res, "Fetch Experiences");
     }
     catch (error) {
         (0, Messages_1.catchErrorLog)(res, error);
@@ -31,18 +21,7 @@ const storeExperiences = async (req, res) => {
         consoleLogsFunction_1.MessageLog.Event("Storing Experiences");
         const data = { ...req.body };
         const result = await (0, Experiences_1.createExperience)(data);
-        if (!result) {
-            consoleLogsFunction_1.MessageLog.Error("Failed to store data");
-            res.status(500).json(Messages_1.ErrorMessages["Server Error"]);
-            return;
-        }
-        consoleLogsFunction_1.MessageLog.Success("Experience data have been stored");
-        res.status(200).json({ messages: {
-                code: 0,
-                message: "Experience data have been stored"
-            },
-            result
-        });
+        (0, Messages_1.checkCreateResult)(result, res, "Experience");
     }
     catch (error) {
         (0, Messages_1.catchErrorLog)(res, error);

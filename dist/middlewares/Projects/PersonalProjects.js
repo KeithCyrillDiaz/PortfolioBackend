@@ -1,21 +1,27 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.experienceInputValidation = void 0;
+exports.inputValidationPersonalProjects = void 0;
 const consoleLogsFunction_1 = require("../../constants/consoleLogsFunction");
 const Messages_1 = require("../../constants/Messages");
 const validation_1 = require("../../constants/validation");
-const experienceInputValidation = async (req, res, next) => {
+const inputValidationPersonalProjects = async (req, res, next) => {
     try {
-        consoleLogsFunction_1.MessageLog.Event("Validating Inputs");
-        const { startingMonth, endingMonth, year, company, role, bulletsData } = req.body;
+        consoleLogsFunction_1.MessageLog.Event("Validating Input");
+        const { startingMonth, endingMonth, MobileAndDesktop, year, projectType, appName, projectDetails, introduction, images, videos, } = req.body;
+        //MobileAppProject is not required so its okay not to check
         if (!startingMonth ||
             !validation_1.ValidMonth.includes(startingMonth) ||
             !endingMonth ||
             !validation_1.ValidMonth.includes(endingMonth) ||
+            !MobileAndDesktop ||
+            !year ||
             typeof year !== 'number' ||
-            !company ||
-            !role ||
-            !Array.isArray(bulletsData)) {
+            !projectType ||
+            !appName ||
+            !projectDetails ||
+            !introduction ||
+            !images ||
+            !videos) {
             consoleLogsFunction_1.MessageLog.Error("Bad Request");
             res.status(400).json(Messages_1.ErrorMessages['Bad Request']);
             return;
@@ -28,5 +34,5 @@ const experienceInputValidation = async (req, res, next) => {
         return;
     }
 };
-exports.experienceInputValidation = experienceInputValidation;
-//# sourceMappingURL=Experience.js.map
+exports.inputValidationPersonalProjects = inputValidationPersonalProjects;
+//# sourceMappingURL=PersonalProjects.js.map

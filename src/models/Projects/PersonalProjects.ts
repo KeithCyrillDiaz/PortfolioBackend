@@ -17,7 +17,7 @@ const PersonalProjectSchema = new mongoose.Schema({
         portrait: {type: Boolean, default: false},
     }]},
 
-    videos: {type: {
+    video: {type: {
         videoURL: {type: String, required: true},
         label: {type: String, required: true},
         videoThumbNailURL: {type: String, required: true},

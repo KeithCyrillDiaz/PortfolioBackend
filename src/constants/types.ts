@@ -20,3 +20,32 @@ export type TechnicalSkillTypes = {
     Experience: string;
     Rating: number
 }
+
+
+export type imageType = {
+    imagesURL: string[];
+    label: string;
+    portrait?: boolean
+}
+
+export type videoType = {
+    videoURL: string;
+    label: string;
+    videoThumbNailURL: string
+}
+
+export type ProjectTypes = 'Thesis Project' | 'Personal Project'
+
+export type PersonalProjectsTypes = {
+    startingMonth: dateTypes;
+    endingMonth: dateTypes;
+    MobileAndDesktop: boolean;
+    MobileAppProject?: boolean;
+    year: number
+    projectType: ProjectTypes;
+    appName: string;
+    projectDetails: string;
+    introduction: string;
+    images: imageType[];
+    videos: videoType[];
+}

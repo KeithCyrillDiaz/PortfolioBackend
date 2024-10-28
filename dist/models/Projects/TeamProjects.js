@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteTeamProjectById = exports.createTeamProject = exports.getAllTeamProject = exports.TeamProjectsModel = void 0;
+exports.deleteTeamProjectById = exports.createTeamProject = exports.findOneTeamProjectByField = exports.getAllTeamProject = exports.TeamProjectsModel = void 0;
 const mongoose_1 = __importDefault(require("mongoose"));
 const TeamProjectsSchema = new mongoose_1.default.Schema({
     startingMonth: { type: String, required: true },
@@ -35,10 +35,14 @@ const TeamProjectsSchema = new mongoose_1.default.Schema({
                 role: { type: String, required: true },
                 fullName: { type: String, required: true },
             }], required: true },
+    createdAt: { type: Date, default: Date.now },
+    updatedAt: { type: Date, default: Date.now }
 });
 exports.TeamProjectsModel = mongoose_1.default.model("Team_Project", TeamProjectsSchema);
 const getAllTeamProject = () => exports.TeamProjectsModel.find();
 exports.getAllTeamProject = getAllTeamProject;
+const findOneTeamProjectByField = (key, value) => exports.TeamProjectsModel.findOne({ [key]: value });
+exports.findOneTeamProjectByField = findOneTeamProjectByField;
 const createTeamProject = (values) => new exports.TeamProjectsModel(values).save().then((result) => result.toObject());
 exports.createTeamProject = createTeamProject;
 const deleteTeamProjectById = (id) => exports.TeamProjectsModel.findOneAndDelete({ _id: id });

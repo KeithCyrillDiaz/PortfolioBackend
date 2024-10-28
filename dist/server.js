@@ -14,6 +14,8 @@ const dotenv_1 = __importDefault(require("dotenv"));
 const mongoose_1 = __importDefault(require("mongoose"));
 const colors_1 = __importDefault(require("colors"));
 const consoleLogsFunction_1 = require("./constants/consoleLogsFunction");
+const TechnicalSkills_InsertDefaultData_1 = require("./models/InsertDefaultData/TechnicalSkills.InsertDefaultData");
+const TeamProjects_InsertDefaultData_1 = require("./models/InsertDefaultData/TeamProjects.InsertDefaultData");
 colors_1.default.enable();
 dotenv_1.default.config();
 const app = (0, express_1.default)();
@@ -37,7 +39,12 @@ server.listen(7000, () => {
         consoleLogsFunction_1.MessageLog.Ready("MongoDB is running at Atlas");
 });
 mongoose_1.default.Promise = Promise;
-mongoose_1.default.connect(MongDB_URL);
+mongoose_1.default.connect(MongDB_URL).then(async () => {
+    consoleLogsFunction_1.MessageLog.Ready("MongoDB is Connected");
+    //to set default value skills
+    await (0, TeamProjects_InsertDefaultData_1.insertDefaultTeamProjects)();
+    await (0, TechnicalSkills_InsertDefaultData_1.insertDefaultTechnicalSkills)();
+});
 mongoose_1.default.connection.on('error', (error) => console.log(error));
 app.use('/', (0, router_1.default)());
 exports.default = app;

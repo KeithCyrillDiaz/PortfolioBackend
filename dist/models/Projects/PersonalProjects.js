@@ -25,6 +25,8 @@ const PersonalProjectSchema = new mongoose_1.default.Schema({
             label: { type: String, required: true },
             videoThumbNailURL: { type: String, required: true },
         } },
+    createdAt: { type: Date, default: Date.now },
+    updatedAt: { type: Date, default: Date.now }
 });
 exports.PersonalProjectModel = mongoose_1.default.model("Personal_Project", PersonalProjectSchema);
 const getAllPersonalProjects = () => exports.PersonalProjectModel.find();

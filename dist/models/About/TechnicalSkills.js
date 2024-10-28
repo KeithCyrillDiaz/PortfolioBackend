@@ -10,7 +10,9 @@ const TechnicalSkillsSchema = new mongoose_1.default.Schema({
     url: { type: String, required: true },
     Level: { type: String, required: true },
     Experience: { type: String, required: true },
-    Rating: { type: Number, required: true },
+    projects: { type: [String], required: true },
+    createdAt: { type: Date, default: Date.now },
+    updatedAt: { type: Date, default: Date.now }
 });
 exports.TechnicalSkillsModel = mongoose_1.default.model("Technical_Skills", TechnicalSkillsSchema);
 const getTechnicalSkills = () => exports.TechnicalSkillsModel.find();

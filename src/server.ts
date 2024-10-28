@@ -10,6 +10,9 @@ import dotenv from 'dotenv';
 import mongoose from 'mongoose'
 import colors from 'colors'
 import { MessageLog } from './constants/consoleLogsFunction';
+import { insertDefaultTechnicalSkills } from './models/InsertDefaultData/TechnicalSkills.InsertDefaultData';
+import { insertDefaultTeamProjects } from './models/InsertDefaultData/TeamProjects.InsertDefaultData';
+
 colors.enable();
 
 dotenv.config()
@@ -43,7 +46,12 @@ server.listen(7000,() => {
 });
 
 mongoose.Promise = Promise;
-mongoose.connect(MongDB_URL);
+mongoose.connect(MongDB_URL).then( async () => {
+    MessageLog.Ready("MongoDB is Connected");
+    //to set default value skills
+    await insertDefaultTeamProjects()
+    await insertDefaultTechnicalSkills()
+});
 mongoose.connection.on('error', (error: Error) => console.log(error));
 
 

@@ -31,7 +31,7 @@ const server = http.createServer(app)
 
 app.get ("/", (req, res) => {res.json("Portfolio Backend")})
 
-const MongDB_URL = process.env.MONGO_DB_LOCAL
+const MongDB_URL = process.env.MONGO_DB_ATLAS
 
 if (!MongDB_URL) {
     throw new Error("MongoDB URL is not defined");

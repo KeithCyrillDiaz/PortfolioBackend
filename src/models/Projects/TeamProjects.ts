@@ -1,4 +1,50 @@
+import { MessageLog } from "constants/consoleLogsFunction";
+import { MembersType } from "constants/types";
 import mongoose from "mongoose";
+
+type imagesType = {
+    imagesURL: string[];
+    label: string;
+    portrait?: boolean;
+}
+
+type videoType = {
+    videoURL: string;
+    label:  string;
+    videoThumbNailURL:  string;
+}
+
+type TechnologiesType = {
+    frontEnd: string[];
+    backEnd: string[];
+}
+
+type Members = {
+    profileImageURL: string;
+    linkedInURL: string;
+    role: string;
+    fullName: string;
+}
+
+export type TeamProjectTypes = {
+    startingMonth: string;
+    endingMonth: string;
+    MobileAndDesktop: boolean;
+    MobileAppProject?: boolean;
+    year: number;
+    projectType: string;
+    appName: string;
+    projectDetails: string;
+    introduction: string;
+
+    images: imagesType[];
+
+    video: videoType;
+
+    Technologies: TechnologiesType;
+
+    Members:MembersType[];
+}
 
 
 const TeamProjectsSchema = new mongoose.Schema({
@@ -35,10 +81,16 @@ const TeamProjectsSchema = new mongoose.Schema({
         role: {type: String, required: true},
         fullName: {type: String, required: true},
         }], required: true},
+    
+    createdAt: {type: Date, default: Date.now},
+    updatedAt: {type: Date, default: Date.now}
 })
 
 
 export const TeamProjectsModel =  mongoose.model("Team_Project", TeamProjectsSchema);
 export const getAllTeamProject = () => TeamProjectsModel.find();
+export const findOneTeamProjectByField = (key: keyof TeamProjectTypes, value: any) => TeamProjectsModel.findOne({[key]: value})
 export const createTeamProject = (values: Record<string, any>) => new TeamProjectsModel(values).save().then((result) => result.toObject());
 export const deleteTeamProjectById = (id: mongoose.ObjectId) => TeamProjectsModel.findOneAndDelete({_id: id})
+
+

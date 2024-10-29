@@ -50,11 +50,11 @@ export const checkFetchResult = (result: Document[], res: express.Response, data
         return 
     }
 
-    MessageLog.Success("Retrieve Personal Projects Data Successfully")
+    MessageLog.Success(`Retrieve ${dataName.toLowerCase()} Data Successfully`)
     res.status(200).json({
         messages: {
             code: 0,
-            message: "Retrieve Personal Projects Data Successfully"
+            message: `Retrieve ${dataName.toLowerCase()} Data Successfully`
         },
         result
     })

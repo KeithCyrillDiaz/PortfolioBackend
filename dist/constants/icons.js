@@ -24,7 +24,7 @@ exports.TechnicalSkillsIcons = {
 };
 exports.kalingaURLS = {
     "Kalinga Admin Home": process.env.KALINGA_ADMIN_HOMEPAGE,
-    "Kalinga Admin Dashboard": process.env.KALINGA_ADMIN__DASHBOARD,
+    "Kalinga Admin Dashboard": process.env.KALINGA_ADMIN_DASHBOARD,
     "Kalinga App Log In": process.env.KALINGA_APP_LOG_IN,
     "Kalinga App Donor Dashboard": process.env.KALINGA_APP_DONOR_DASHBOARD,
     "Kalinga App Requestor Dashboard": process.env.KALINGA_APP_REQUESTOR_DASHBOARD,
@@ -34,24 +34,24 @@ exports.kalingaURLS = {
 };
 exports.kalingaMembersURLS = {
     Alisha: {
-        profileImage: process.env.LINKED_IN_ALISHA,
-        linkedIn: process.env.DP_ALISHA,
+        profileImage: process.env.DP_ALISHA,
+        linkedIn: process.env.LINKED_IN_ALISHA,
     },
     Rogine: {
-        profileImage: process.env.LINKED_IN_CUBELO,
-        linkedIn: process.env.DP_CUBELO,
+        profileImage: process.env.DP_CUBELO,
+        linkedIn: process.env.LINKED_IN_CUBELO,
     },
     Keith: {
-        profileImage: process.env.LINKED_IN_KEITH,
-        linkedIn: process.env.DP_KEITH,
+        profileImage: process.env.DP_KEITH,
+        linkedIn: process.env.LINKED_IN_KEITH,
     },
     Jeannah: {
-        profileImage: process.env.LINKED_IN_JEANNAH,
-        linkedIn: process.env.DP_JEANNAH,
+        profileImage: process.env.DP_JEANNAH,
+        linkedIn: process.env.LINKED_IN_JEANNAH,
     },
     Beverly: {
-        profileImage: process.env.LINKED_IN_BEVERLY,
-        linkedIn: process.env.DP_BEVERLY,
+        profileImage: process.env.DP_BEVERLY,
+        linkedIn: process.env.LINKED_IN_BEVERLY,
     },
 };
 //# sourceMappingURL=icons.js.map

@@ -1,4 +1,21 @@
+import { imageType, videoType } from "constants/types";
 import mongoose from "mongoose";
+
+
+export type PersonalProjectTypes = {
+    startingMonth: string;
+    endingMonth:  string;
+    MobileAndDesktop: boolean
+    MobileAppProject?: boolean;
+    year: number;
+    projectType:  string;
+    appName:  string;
+    projectDetails:  string;
+    introduction:  string;
+    images: imageType[];
+
+    video: videoType[];
+}
 
 
 const PersonalProjectSchema = new mongoose.Schema({

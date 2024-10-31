@@ -44,11 +44,11 @@ const checkFetchResult = (result, res, dataName) => {
         });
         return;
     }
-    consoleLogsFunction_1.MessageLog.Success("Retrieve Personal Projects Data Successfully");
+    consoleLogsFunction_1.MessageLog.Success(`Retrieve ${dataName.toLowerCase()} Data Successfully`);
     res.status(200).json({
         messages: {
             code: 0,
-            message: "Retrieve Personal Projects Data Successfully"
+            message: `Retrieve ${dataName.toLowerCase()} Data Successfully`
         },
         result
     });

@@ -1,6 +1,6 @@
 import { ExperienceTypes } from 'constants/types'
 import { MessageLog } from '../../constants/consoleLogsFunction'
-import { catchErrorLog, checkCreateResult, ErrorMessages,  } from '../../constants/Messages'
+import { catchErrorLog, checkCreateResult, checkFetchResult, ErrorMessages,  } from '../../constants/Messages'
 import express from 'express'
 import { createExperience, getExperiences } from '../../models/About/Experiences'
 
@@ -10,7 +10,7 @@ export const fetchExperiences = async(req: express.Request, res: express.Respons
         
         MessageLog.Event("Fetching Experiences")
         const result = await getExperiences()
-        checkCreateResult(result, res, "Fetch Experiences")
+        checkFetchResult(result, res, "Fetch Experiences")
 
     } catch (error) {
         catchErrorLog(res, error)

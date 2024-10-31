@@ -8,7 +8,7 @@ const fetchExperiences = async (req, res) => {
     try {
         consoleLogsFunction_1.MessageLog.Event("Fetching Experiences");
         const result = await (0, Experiences_1.getExperiences)();
-        (0, Messages_1.checkCreateResult)(result, res, "Fetch Experiences");
+        (0, Messages_1.checkFetchResult)(result, res, "Fetch Experiences");
     }
     catch (error) {
         (0, Messages_1.catchErrorLog)(res, error);

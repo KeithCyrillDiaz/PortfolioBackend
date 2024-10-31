@@ -12,6 +12,7 @@ import colors from 'colors'
 import { MessageLog } from './constants/consoleLogsFunction';
 import { insertDefaultTechnicalSkills } from './models/InsertDefaultData/TechnicalSkills.InsertDefaultData';
 import { insertDefaultTeamProjects } from './models/InsertDefaultData/TeamProjects.InsertDefaultData';
+import { insertDefaultExperience } from './models/InsertDefaultData/Experience.InsertDefaultData';
 
 colors.enable();
 
@@ -49,8 +50,16 @@ mongoose.Promise = Promise;
 mongoose.connect(MongDB_URL).then( async () => {
     MessageLog.Ready("MongoDB is Connected");
     //to set default value skills
-    await insertDefaultTeamProjects()
-    await insertDefaultTechnicalSkills()
+    try {
+        await Promise.all([
+            insertDefaultTeamProjects(),
+            insertDefaultExperience(),
+            insertDefaultTechnicalSkills(),
+        ]);
+        MessageLog.Ready("All default data inserted successfully");
+    } catch (error) {
+        MessageLog.Error("Error inserting default data: " + error.message);
+    }
 });
 mongoose.connection.on('error', (error: Error) => console.log(error));
 

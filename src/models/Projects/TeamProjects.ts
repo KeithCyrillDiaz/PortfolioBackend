@@ -1,5 +1,6 @@
-import { MessageLog } from "constants/consoleLogsFunction";
-import { MembersType } from "constants/types";
+
+import { MembersType } from "../../constants/types";
+import { dateTypes } from "../../models/InsertDefaultData/Experience.InsertDefaultData";
 import mongoose from "mongoose";
 
 type imagesType = {
@@ -27,8 +28,8 @@ type Members = {
 }
 
 export type TeamProjectTypes = {
-    startingMonth: string;
-    endingMonth: string;
+    startingMonth: dateTypes;
+    endingMonth: dateTypes;
     MobileAndDesktop: boolean;
     MobileAppProject?: boolean;
     year: number;

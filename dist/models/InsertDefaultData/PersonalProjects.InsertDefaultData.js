@@ -13,7 +13,6 @@ const insertDefaultPersonalProject = async () => {
         //     year: 2024,
         //     projectType:  "Portfolio Website",
         //     appName:  "Keith Diaz Portfolio",
-        //     projectDetails:  "string",
         // }
     }
     catch (error) {

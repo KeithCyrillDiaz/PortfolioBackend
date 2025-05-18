@@ -13,7 +13,7 @@ const PersonalProjectSchema = new mongoose_1.default.Schema({
     year: { type: Number, required: true },
     projectType: { type: String, required: true },
     appName: { type: String, required: true },
-    projectDetails: { type: String, required: true },
+    projectDetails: { type: String, },
     introduction: { type: String, required: true },
     images: { type: [{
                 imagesURL: { type: [String], required: true },

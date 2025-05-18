@@ -20,12 +20,6 @@ type TechnologiesType = {
     backEnd: string[];
 }
 
-type Members = {
-    profileImageURL: string;
-    linkedInURL: string;
-    role: string;
-    fullName: string;
-}
 
 export type TeamProjectTypes = {
     startingMonth: dateTypes;
